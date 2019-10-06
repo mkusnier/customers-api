@@ -10,3 +10,10 @@ async function getCustomers() {
     const [customers] = await datastore.runQuery(query);
     return customers
 }
+
+async function getCustomer(id) {
+    const [customer] = await datastore.get({kind: 'Customer', id: id});
+    return customer
+}
+
+module.exports = {getCustomer, getCustomers}

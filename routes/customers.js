@@ -22,6 +22,9 @@ router.get('/getCustomer?:id', async function(req, res, next) {
   }
   try {
     const customer = await datastore.getCustomer(req.query.id)
+    if(!customer) {
+      res.status(204).send();
+    }
     res.json(customer);
   } catch(err) {
     res.status(500).json({msg: 'An error occured while retrieving customer'})

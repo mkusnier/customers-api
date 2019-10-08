@@ -24,6 +24,7 @@ router.get('/getCustomer?:id', async function(req, res, next) {
     const customer = await datastore.getCustomer(req.query.id)
     if(!customer) {
       res.status(204).send();
+      return;
     }
     res.json(customer);
   } catch(err) {
